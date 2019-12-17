@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import ESTabBarController_swift
+import SwiftMessages
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,31 +19,71 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let tabbar = self.setupTabbarStyle(delegate: self as? UITabBarControllerDelegate)
+        self.window?.backgroundColor = UIColor.white
+        self.window?.rootViewController = tabbar
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    func setupTabbarStyle(delegate:UITabBarControllerDelegate?) -> ESTabBarController {
+        let tabbarController = ESTabBarController();
+        tabbarController.delegate = delegate;
+        tabbarController.title = "Irregularity";
+        tabbarController.tabBar.shadowImage = UIImage(named: "transparent");
+        tabbarController.shouldHijackHandler = {
+            tabbarController, ViewController, index in
+            return index == 2;
+        }
+        
+        tabbarController.didHijackHandler = {
+           [weak tabbarController] tabBarController, ViewController, index in
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                let alertView = MessageView.viewFromNib(layout: .cardView);
+                alertView.configureTheme(Theme.warning);
+                alertView.configureDropShadow();
+//                let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
+				
+                alertView.configureContent(title: "WARNING", body: "NO support yet", iconText: "🤔")
+                
+                var warningConfig = SwiftMessages.defaultConfig;
+                warningConfig.presentationContext = .window(windowLevel: UIWindow.Level.statusBar)
+                SwiftMessages.show(config: warningConfig, view: alertView)
+            });
+        }
+        
+        
+        let home = UIViewController()
+        let listen = UIViewController()
+        let play = UIViewController()
+        let find = UIViewController()
+        let mine = UIViewController()
+        
+        home.title = "首页"
+        listen.title = "我听"
+        play.title = "播放"
+        find.title = "发现"
+        mine.title = "我的"
+        
+        home.tabBarItem = ESTabBarItem.init(LBFMIrregularityBasicContentView(), title: home.title, image: UIImage(named: "home"), selectedImage: UIImage(named: "home_1"))
+        listen.tabBarItem = ESTabBarItem.init(LBFMIrregularityBasicContentView(), title: listen.title, image: UIImage(named: "find"), selectedImage: UIImage(named: "find_1"))
+        play.tabBarItem = ESTabBarItem.init(LBFMIrregularityBasicContentView(), title: play.title, image: UIImage(named: "tab_play"), selectedImage: UIImage(named: "tab_play"))
+        find.tabBarItem = ESTabBarItem.init(LBFMIrregularityBasicContentView(), title: find.title, image: UIImage(named: "find"), selectedImage: UIImage(named: "find_1"))
+        mine.tabBarItem = ESTabBarItem.init(LBFMIrregularityBasicContentView(), title: mine.title, image: UIImage(named: "me"), selectedImage: UIImage(named: "me_1"))
+        
+        
+        let homeNav = UINavigationController.init(rootViewController: home);
+        let listenNav = UINavigationController.init(rootViewController: listen)
+        let playNav = UINavigationController.init(rootViewController: play)
+        let finNav = UINavigationController.init(rootViewController: find)
+        let meNav = UINavigationController.init(rootViewController: mine)
+        
+        tabbarController.viewControllers = [homeNav, listenNav, playNav, finNav, meNav];
+        
+        
+        return tabbarController;
     }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-
 }
 
