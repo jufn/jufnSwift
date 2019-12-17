@@ -1,0 +1,22 @@
+PODS:
+  - ESTabBarController-swift (2.6.5)
+  - SwiftMessages (6.0.2):
+    - SwiftMessages/App (= 6.0.2)
+  - SwiftMessages/App (6.0.2)
+
+DEPENDENCIES:
+  - ESTabBarController-swift (~> 2.6.2)
+  - SwiftMessages (= 6.0.2)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ESTabBarController-swift
+    - SwiftMessages
+
+SPEC CHECKSUMS:
+  ESTabBarController-swift: f31cd3e30bde23619d3b300266f27864d96ffb58
+  SwiftMessages: 8b3cc68dba2f1c91aac1a74c90b10287aac35371
+
+PODFILE CHECKSUM: 7755631a3feefe05ec2e5e08b6285a777197c0bb
+
+COCOAPODS: 1.5.3
