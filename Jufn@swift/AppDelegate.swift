@@ -10,12 +10,10 @@ import UIKit
 import ESTabBarController_swift
 import SwiftMessages
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -44,8 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let alertView = MessageView.viewFromNib(layout: .cardView);
                 alertView.configureTheme(Theme.warning);
                 alertView.configureDropShadow();
-//                let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
-				
                 alertView.configureContent(title: "WARNING", body: "NO support yet", iconText: "🤔")
                 
                 var warningConfig = SwiftMessages.defaultConfig;
@@ -54,8 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             });
         }
         
-        
-        let home = UIViewController()
+        let home = ViewController()
         let listen = UIViewController()
         let play = UIViewController()
         let find = UIViewController()
@@ -72,7 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         play.tabBarItem = ESTabBarItem.init(LBFMIrregularityBasicContentView(), title: play.title, image: UIImage(named: "tab_play"), selectedImage: UIImage(named: "tab_play"))
         find.tabBarItem = ESTabBarItem.init(LBFMIrregularityBasicContentView(), title: find.title, image: UIImage(named: "find"), selectedImage: UIImage(named: "find_1"))
         mine.tabBarItem = ESTabBarItem.init(LBFMIrregularityBasicContentView(), title: mine.title, image: UIImage(named: "me"), selectedImage: UIImage(named: "me_1"))
-        
         
         let homeNav = UINavigationController.init(rootViewController: home);
         let listenNav = UINavigationController.init(rootViewController: listen)
