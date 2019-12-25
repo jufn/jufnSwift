@@ -1,6 +1,0 @@
-framework module Pods_Jufn_swift {
-  umbrella header "Pods-Jufn@swift-umbrella.h"
-
-  export *
-  module * { export * }
-}
