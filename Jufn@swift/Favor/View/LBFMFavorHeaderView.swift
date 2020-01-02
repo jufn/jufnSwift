@@ -68,4 +68,8 @@ extension LBFMFavorHeaderView: UICollectionViewDelegate, UICollectionViewDataSou
 		cell.dataString = dataArray[indexPath.row]
 		return cell
 	}
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		
+	}
 }
