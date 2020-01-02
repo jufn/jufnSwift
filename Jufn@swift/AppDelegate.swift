@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let home = ViewController()
         let listen = UIViewController()
         let play = UIViewController()
-        let find = UIViewController()
+        let find = LBFMFavorViewController()
         let mine = UIViewController()
         
         home.title = "首页"
@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         home.tabBarItem = ESTabBarItem.init(LBFMIrregularityBasicContentView(), title: home.title, image: UIImage(named: "home"), selectedImage: UIImage(named: "home_1"))
         listen.tabBarItem = ESTabBarItem.init(LBFMIrregularityBasicContentView(), title: listen.title, image: UIImage(named: "find"), selectedImage: UIImage(named: "find_1"))
         play.tabBarItem = ESTabBarItem.init(LBFMIrregularityBasicContentView(), title: play.title, image: UIImage(named: "tab_play"), selectedImage: UIImage(named: "tab_play"))
-        find.tabBarItem = ESTabBarItem.init(LBFMIrregularityBasicContentView(), title: find.title, image: UIImage(named: "find"), selectedImage: UIImage(named: "find_1"))
+        find.tabBarItem = ESTabBarItem.init(LBFMIrregularityBasicContentView(), title: find.title, image: UIImage(named: "favor"), selectedImage: UIImage(named: "favor_1"))
         mine.tabBarItem = ESTabBarItem.init(LBFMIrregularityBasicContentView(), title: mine.title, image: UIImage(named: "me"), selectedImage: UIImage(named: "me_1"))
         
         let homeNav = UINavigationController.init(rootViewController: home);

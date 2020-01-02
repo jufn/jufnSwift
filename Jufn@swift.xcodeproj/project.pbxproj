@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,10 @@
 		1AF997FE23A4F65900838859 /* LBFMBasicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF997FD23A4F65900838859 /* LBFMBasicContentView.swift */; };
 		1AF9980023A4F7D700838859 /* LBFMBouncesContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF997FF23A4F7D700838859 /* LBFMBouncesContentView.swift */; };
 		1AF9980423A4FBE700838859 /* LBFMIrregularityBasicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9980323A4FBE700838859 /* LBFMIrregularityBasicContentView.swift */; };
+		681329D123BE054400DE1773 /* LBFMFavorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681329D023BE054400DE1773 /* LBFMFavorViewController.swift */; };
+		681329D623BE0AD700DE1773 /* LBFMFavorHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681329D523BE0AD700DE1773 /* LBFMFavorHeaderCollectionViewCell.swift */; };
+		681329DA23BE0C2E00DE1773 /* LBFMFavorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681329D923BE0C2E00DE1773 /* LBFMFavorHeader.swift */; };
+		681329DC23BE135100DE1773 /* LBFMFavorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681329DB23BE135100DE1773 /* LBFMFavorHeaderView.swift */; };
 		CE62F8A702B0BB5AD6FCB02B /* Pods_Jufn_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 254824D917373D53C854E66B /* Pods_Jufn_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +34,10 @@
 		1AF997FF23A4F7D700838859 /* LBFMBouncesContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBFMBouncesContentView.swift; sourceTree = "<group>"; };
 		1AF9980323A4FBE700838859 /* LBFMIrregularityBasicContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBFMIrregularityBasicContentView.swift; sourceTree = "<group>"; };
 		254824D917373D53C854E66B /* Pods_Jufn_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jufn_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		681329D023BE054400DE1773 /* LBFMFavorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBFMFavorViewController.swift; sourceTree = "<group>"; };
+		681329D523BE0AD700DE1773 /* LBFMFavorHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBFMFavorHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
+		681329D923BE0C2E00DE1773 /* LBFMFavorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBFMFavorHeader.swift; sourceTree = "<group>"; };
+		681329DB23BE135100DE1773 /* LBFMFavorHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBFMFavorHeaderView.swift; sourceTree = "<group>"; };
 		A596443FE36562B6163FB8DE /* Pods-Jufn@swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jufn@swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jufn@swift/Pods-Jufn@swift.release.xcconfig"; sourceTree = "<group>"; };
 		D7BDBA4D981ECBB18F51E324 /* Pods-Jufn@swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jufn@swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jufn@swift/Pods-Jufn@swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +86,7 @@
 			children = (
 				1AF997EA23A4D20D00838859 /* AppDelegate.swift */,
 				1AF997EC23A4D20D00838859 /* ViewController.swift */,
+				681329CF23BE04F200DE1773 /* Favor */,
 				1AF997FC23A4F60F00838859 /* Main */,
 				1AF997EE23A4D20D00838859 /* Main.storyboard */,
 				1AF997F123A4D21000838859 /* Assets.xcassets */,
@@ -103,6 +112,33 @@
 				254824D917373D53C854E66B /* Pods_Jufn_swift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		681329CF23BE04F200DE1773 /* Favor */ = {
+			isa = PBXGroup;
+			children = (
+				681329D023BE054400DE1773 /* LBFMFavorViewController.swift */,
+				681329D823BE0BFF00DE1773 /* Common */,
+				681329D223BE0A0E00DE1773 /* View */,
+			);
+			path = Favor;
+			sourceTree = "<group>";
+		};
+		681329D223BE0A0E00DE1773 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				681329D523BE0AD700DE1773 /* LBFMFavorHeaderCollectionViewCell.swift */,
+				681329DB23BE135100DE1773 /* LBFMFavorHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		681329D823BE0BFF00DE1773 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				681329D923BE0C2E00DE1773 /* LBFMFavorHeader.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,22 +216,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Jufn@swift/Pods-Jufn@swift-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Jufn@swift/Pods-Jufn@swift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Jufn@swift/Pods-Jufn@swift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Jufn@swift/Pods-Jufn@swift-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Jufn@swift/Pods-Jufn@swift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9FF3680B9E728D9A203FAC58 /* [CP] Check Pods Manifest.lock */ = {
@@ -227,10 +256,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				681329DA23BE0C2E00DE1773 /* LBFMFavorHeader.swift in Sources */,
 				1AF997ED23A4D20D00838859 /* ViewController.swift in Sources */,
 				1AF9980423A4FBE700838859 /* LBFMIrregularityBasicContentView.swift in Sources */,
+				681329D123BE054400DE1773 /* LBFMFavorViewController.swift in Sources */,
 				1AF9980023A4F7D700838859 /* LBFMBouncesContentView.swift in Sources */,
 				1AF997FE23A4F65900838859 /* LBFMBasicContentView.swift in Sources */,
+				681329DC23BE135100DE1773 /* LBFMFavorHeaderView.swift in Sources */,
+				681329D623BE0AD700DE1773 /* LBFMFavorHeaderCollectionViewCell.swift in Sources */,
 				1AF997EB23A4D20D00838859 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
