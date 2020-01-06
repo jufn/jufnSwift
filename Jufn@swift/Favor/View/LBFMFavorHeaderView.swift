@@ -23,7 +23,7 @@ class LBFMFavorHeaderView: UIView {
 	   //        "http://fdfs.xmcdn.com/group48/M02/63/E3/wKgKnFtW37mR9fH7AAAcl17u2wA113.png",
 	   //        "http://fdfs.xmcdn.com/group46/M09/8A/98/wKgKlltVs3-gubjFAAAxXboXKFE462.png"
 	   //    ]
-	   let dataArray = ["电子书城","全民朗读","大咖主播","活动","直播微课","听单","游戏中心","边听变看","商城","0元购"]
+	let dataArray = ["电子书城","全民朗读","大咖主播","活动","直播微课","听单","游戏中心","边听变看","商城","0元购"]
 	
 	private lazy var collectionView: UICollectionView = {
 		let screen_width = UIScreen.main.bounds.size.width
@@ -32,7 +32,7 @@ class LBFMFavorHeaderView: UIView {
 		layout.minimumInteritemSpacing = 0
 		layout.itemSize = CGSize(width: screen_width / 5, height: 90)
 		
-		let collectionView = UICollectionView(frame: CGRect.init(x: 0, y: 10, width: UIScreen.main.bounds.size.width, height: 180), collectionViewLayout: layout)
+		let collectionView = UICollectionView(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 180), collectionViewLayout: layout)
 		collectionView.delegate = self
 		collectionView.dataSource = self
 		collectionView.backgroundColor = UIColor.white
