@@ -35,9 +35,8 @@ class LBFMFavorViewController: UIViewController {
 		layout.minimumLineSpacing = 0
 		layout.minimumInteritemSpacing = 0
 		layout.scrollDirection = .horizontal
-		layout.itemSize = CGSize.init(width: screen_bounds.width, height: screen_bounds.height -  navHeight)
-		let collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: layout)
-		collectionView.frame = view.bounds
+		layout.itemSize = CGSize.init(width: screen_bounds.width, height: screen_bounds.height - navHeight - header.frame.height)
+		let collectionView = UICollectionView.init(frame: CGRect(x: 0, y: navHeight, width: screen_bounds.width, height: screen_bounds.height - navHeight), collectionViewLayout: layout)
 		collectionView.contentInset = UIEdgeInsets.init(top: self.header.frame.height, left: 0, bottom: 0, right: 0)
 		collectionView.contentInsetAdjustmentBehavior = .never
 		collectionView.isPagingEnabled = true
