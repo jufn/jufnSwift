@@ -18,35 +18,53 @@ public protocol LBScrollPageViewDelegate: NSObjectProtocol {
 	
 	func scrollPageView(_ scrollPageView: LBScrollPageView, contentView AtTitle: String) -> UIView // content view
 	
-	func scrollPageView(_ scrollPageView: LBScrollPageView, contentViewController AtTitle: String) -> UIViewController
-	
 }
 
 open class LBScrollPageView: UIView {
 
 	weak var delegate: LBScrollPageViewDelegate? {
 		didSet {
-		 setupUI()
+			let height = titleViewHeight ?? 44
+			let flowLayout: UICollectionViewFlowLayout = titleView.collectionViewLayout as! UICollectionViewFlowLayout
+			flowLayout.itemSize = CGSize.init(width: self.frame.size.width / CGFloat(countOfPage()), height: height);
+			containerView.contentSize = CGSize.init(width: self.frame.size.width * CGFloat(countOfPage()), height: containerView.frame.size.height)
+			
+			layoutSubviewsOfContainerView()
+			self.titleView.reloadData()
 		}
 	}
 	var titleViewHeight: CGFloat?
 	
 	override public init(frame: CGRect) {
 		super.init(frame: frame)
+		setupUI()
 	}
 	
 	func setupUI() {
-		
 		// title view
-		
-		
-		
+		self.addSubview(titleView)
+		self.addSubview(containerView)
+	}
+	
+	private func layoutSubviewsOfContainerView() {
+		for index in 0 ... countOfPage() - 1 {
+			let title_index = delegate?.titles(in: self)[index]
+			guard let title = title_index else {
+				return
+			}
+			let view = delegate?.scrollPageView(self, contentView: title)
+			
+			guard let aView = view else {
+				return
+			}
+			
+			aView.frame = CGRect.init(x: CGFloat(index) * self.containerView.frame.size.width, y: 0, width: self.containerView.frame.size.width, height: self.containerView.frame.size.height)
+			containerView .addSubview(aView)
+		}
 	}
 	
 	private let titleViewCellIdentifier = "UICollectionViewCell"
-	
 	private lazy var titleView: UICollectionView = {
-		
 		let height = titleViewHeight ?? 44
 		let flowLayout = UICollectionViewFlowLayout()
 		flowLayout.scrollDirection = .horizontal
@@ -94,7 +112,4 @@ extension LBScrollPageView: UICollectionViewDelegate, UICollectionViewDataSource
 		cell.backgroundColor = UIColor.orange
 		return cell
 	}
-	
-	
-	
 }

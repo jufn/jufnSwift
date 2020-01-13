@@ -19,6 +19,10 @@
 		681329D623BE0AD700DE1773 /* LBFMFavorHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681329D523BE0AD700DE1773 /* LBFMFavorHeaderCollectionViewCell.swift */; };
 		681329DA23BE0C2E00DE1773 /* LBFMFavorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681329D923BE0C2E00DE1773 /* LBFMFavorHeader.swift */; };
 		681329DC23BE135100DE1773 /* LBFMFavorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681329DB23BE135100DE1773 /* LBFMFavorHeaderView.swift */; };
+		68A7409D23CC8FDF007F94EA /* LBScrollPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A7409C23CC8FDF007F94EA /* LBScrollPageView.swift */; };
+		68A740A523CC9AEA007F94EA /* LBTimeLineRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A740A423CC9AEA007F94EA /* LBTimeLineRecommendView.swift */; };
+		68A740A723CC9B04007F94EA /* LBTimeLineAttentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A740A623CC9B04007F94EA /* LBTimeLineAttentionView.swift */; };
+		68A740A923CC9B8E007F94EA /* LBFunDubbingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A740A823CC9B8E007F94EA /* LBFunDubbingView.swift */; };
 		CE62F8A702B0BB5AD6FCB02B /* Pods_Jufn_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 254824D917373D53C854E66B /* Pods_Jufn_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +42,10 @@
 		681329D523BE0AD700DE1773 /* LBFMFavorHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBFMFavorHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		681329D923BE0C2E00DE1773 /* LBFMFavorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBFMFavorHeader.swift; sourceTree = "<group>"; };
 		681329DB23BE135100DE1773 /* LBFMFavorHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBFMFavorHeaderView.swift; sourceTree = "<group>"; };
+		68A7409C23CC8FDF007F94EA /* LBScrollPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBScrollPageView.swift; sourceTree = "<group>"; };
+		68A740A423CC9AEA007F94EA /* LBTimeLineRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTimeLineRecommendView.swift; sourceTree = "<group>"; };
+		68A740A623CC9B04007F94EA /* LBTimeLineAttentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTimeLineAttentionView.swift; sourceTree = "<group>"; };
+		68A740A823CC9B8E007F94EA /* LBFunDubbingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBFunDubbingView.swift; sourceTree = "<group>"; };
 		A596443FE36562B6163FB8DE /* Pods-Jufn@swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jufn@swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jufn@swift/Pods-Jufn@swift.release.xcconfig"; sourceTree = "<group>"; };
 		D7BDBA4D981ECBB18F51E324 /* Pods-Jufn@swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jufn@swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jufn@swift/Pods-Jufn@swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +92,7 @@
 		1AF997E923A4D20D00838859 /* Jufn@swift */ = {
 			isa = PBXGroup;
 			children = (
+				68A7409B23CC8FDF007F94EA /* LBScrollPageView */,
 				1AF997EA23A4D20D00838859 /* AppDelegate.swift */,
 				1AF997EC23A4D20D00838859 /* ViewController.swift */,
 				681329CF23BE04F200DE1773 /* Favor */,
@@ -129,6 +138,9 @@
 			children = (
 				681329D523BE0AD700DE1773 /* LBFMFavorHeaderCollectionViewCell.swift */,
 				681329DB23BE135100DE1773 /* LBFMFavorHeaderView.swift */,
+				68A740A423CC9AEA007F94EA /* LBTimeLineRecommendView.swift */,
+				68A740A623CC9B04007F94EA /* LBTimeLineAttentionView.swift */,
+				68A740A823CC9B8E007F94EA /* LBFunDubbingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -139,6 +151,14 @@
 				681329D923BE0C2E00DE1773 /* LBFMFavorHeader.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		68A7409B23CC8FDF007F94EA /* LBScrollPageView */ = {
+			isa = PBXGroup;
+			children = (
+				68A7409C23CC8FDF007F94EA /* LBScrollPageView.swift */,
+			);
+			path = LBScrollPageView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,11 +280,15 @@
 				1AF997ED23A4D20D00838859 /* ViewController.swift in Sources */,
 				1AF9980423A4FBE700838859 /* LBFMIrregularityBasicContentView.swift in Sources */,
 				681329D123BE054400DE1773 /* LBFMFavorViewController.swift in Sources */,
+				68A7409D23CC8FDF007F94EA /* LBScrollPageView.swift in Sources */,
 				1AF9980023A4F7D700838859 /* LBFMBouncesContentView.swift in Sources */,
 				1AF997FE23A4F65900838859 /* LBFMBasicContentView.swift in Sources */,
 				681329DC23BE135100DE1773 /* LBFMFavorHeaderView.swift in Sources */,
 				681329D623BE0AD700DE1773 /* LBFMFavorHeaderCollectionViewCell.swift in Sources */,
+				68A740A923CC9B8E007F94EA /* LBFunDubbingView.swift in Sources */,
 				1AF997EB23A4D20D00838859 /* AppDelegate.swift in Sources */,
+				68A740A723CC9B04007F94EA /* LBTimeLineAttentionView.swift in Sources */,
+				68A740A523CC9AEA007F94EA /* LBTimeLineRecommendView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
