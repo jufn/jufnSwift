@@ -27,7 +27,7 @@ open class LBScrollPageView: UIView {
 			let height = titleViewHeight ?? 44
 			let flowLayout: UICollectionViewFlowLayout = titleView.collectionViewLayout as! UICollectionViewFlowLayout
 			flowLayout.itemSize = CGSize.init(width: self.frame.size.width / CGFloat(countOfPage()), height: height);
-			containerView.contentSize = CGSize.init(width: self.frame.size.width * CGFloat(countOfPage()), height: containerView.frame.size.height)
+			containerView.contentSize = CGSize.init(width: self.frame.size.width * CGFloat(countOfPage()), height: containerView.frame.size.height - titleView.frame.size.height)
 			
 			layoutSubviewsOfContainerView()
 			self.titleView.reloadData()
@@ -58,7 +58,7 @@ open class LBScrollPageView: UIView {
 				return
 			}
 			
-			aView.frame = CGRect.init(x: CGFloat(index) * self.containerView.frame.size.width, y: 0, width: self.containerView.frame.size.width, height: self.containerView.frame.size.height)
+			aView.frame = CGRect.init(x: CGFloat(index) * self.containerView.frame.size.width, y: 0, width: self.containerView.frame.size.width, height: self.containerView.contentSize.height)
 			containerView .addSubview(aView)
 		}
 	}
@@ -85,7 +85,7 @@ open class LBScrollPageView: UIView {
 		containerView.delegate = self
 		containerView.isPagingEnabled = true
 		containerView.contentInset = UIEdgeInsets.init(top: titleView.frame.size.height, left: 0, bottom: 0, right: 0)
-		containerView.contentSize = CGSize.init(width: self.frame.size.width * CGFloat(countOfPage()), height: containerView.frame.size.height)
+		containerView.contentSize = CGSize.init(width: self.frame.size.width * CGFloat(countOfPage()), height: containerView.frame.size.height - titleView.frame.size.height)
 		
 		return containerView
 		
@@ -109,7 +109,17 @@ extension LBScrollPageView: UICollectionViewDelegate, UICollectionViewDataSource
 	
 	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: titleViewCellIdentifier, for: indexPath)
-		cell.backgroundColor = UIColor.orange
+		
+		let title_row = delegate?.titles(in: self)[indexPath.row]
+		guard let title = title_row else {
+			return UICollectionViewCell.init()
+		}
+		let titleItem = delegate?.scrollPageView(self, headerItem: title)
+		guard let item = titleItem else {
+			return UICollectionViewCell.init()
+		}
+		cell.contentView.addSubview(item)
+		
 		return cell
 	}
 }

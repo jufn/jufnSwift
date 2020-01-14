@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     }
 	
 	private lazy var pageView: LBScrollPageView = {
-		let pageView = LBScrollPageView.init(frame: CGRect.init(x: 0, y: 88, width: self.view.frame.size.width, height: self.view.frame.size.height - 88))
+		let pageView = LBScrollPageView.init(frame: CGRect.init(x: 0, y: 88, width: self.view.frame.size.width, height: self.view.frame.size.height - 88 - 83))
 		pageView.delegate = self;
 		return pageView;
 	}()
@@ -47,7 +47,7 @@ extension ViewController: LBScrollPageViewDelegate {
 		var view: UIView?
 		if index == 0 {
 			view = LBTimeLineAttentionView()
-			view?.backgroundColor = UIColor.orange
+			view?.backgroundColor = UIColor.green
 		} else if index == 1 {
 			view = LBTimeLineRecommendView()
 			view?.backgroundColor = UIColor.blue
