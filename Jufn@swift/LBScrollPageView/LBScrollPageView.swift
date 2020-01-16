@@ -28,7 +28,7 @@ open class LBScrollPageView: UIView {
 			let width = self.frame.size.width / CGFloat(countOfPage())
 			flowLayout.itemSize = CGSize.init(width: width, height: titleCollectionViewHeight());
 			containerView.contentSize = CGSize.init(width: self.frame.size.width * CGFloat(countOfPage()), height: containerView.frame.size.height - titleView.frame.size.height)
-			guard let view = titleView.viewWithTag(10001)?.subviews.first else {
+			guard let view = srollIndicator().subviews.first else {
 				return
 			}
 			let rect = CGRect.init(origin: view.frame.origin, size: CGSize(width: width, height: view.frame.size.height))
@@ -111,6 +111,10 @@ open class LBScrollPageView: UIView {
 		return titleViewHeight - scrollIndicatorHeight
 	}
 	
+	private func srollIndicator() -> UIScrollView {
+		return titleView.viewWithTag(10001) as! UIScrollView
+	}
+	
 	private func countOfPage() -> Int {
 		let count = delegate?.titles(in: self).count
 		return count ?? 1
@@ -142,5 +146,23 @@ extension LBScrollPageView: UICollectionViewDelegate, UICollectionViewDataSource
 		cell.contentView.addSubview(item)
 		
 		return cell
+	}
+	
+	public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let scrollIndicator = srollIndicator()
+		scrollIndicator.setContentOffset(CGPoint(x: CGFloat(indexPath.row) * self.frame.size.width / CGFloat(countOfPage()) * -1, y: scrollIndicator.contentOffset.y), animated: true)
+		containerView.setContentOffset(CGPoint(x: self.frame.size.width * CGFloat(indexPath.row), y: containerView.contentOffset.y), animated: true)
+		
+		guard let view = collectionView.cellForItem(at: indexPath)?.subviews.first else {
+			return
+		}
+		delegate?.scrollPageView(self, tapAt: view)
+	}
+	
+	public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		if scrollView.isDragging || scrollView.isTracking || scrollView.isDecelerating {
+			let scrollIndicator = srollIndicator()
+			scrollIndicator.contentOffset = CGPoint(x: scrollView.contentOffset.x / scrollView.contentSize.width * scrollIndicator.frame.size.width * -1, y: scrollIndicator.contentOffset.y)
+		}
 	}
 }
