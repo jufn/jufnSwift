@@ -24,26 +24,32 @@ open class LBScrollPageView: UIView {
 
 	weak var delegate: LBScrollPageViewDelegate? {
 		didSet {
-			let height = titleViewHeight ?? 44
 			let flowLayout: UICollectionViewFlowLayout = titleView.collectionViewLayout as! UICollectionViewFlowLayout
-			flowLayout.itemSize = CGSize.init(width: self.frame.size.width / CGFloat(countOfPage()), height: height);
+			let width = self.frame.size.width / CGFloat(countOfPage())
+			flowLayout.itemSize = CGSize.init(width: width, height: titleCollectionViewHeight());
 			containerView.contentSize = CGSize.init(width: self.frame.size.width * CGFloat(countOfPage()), height: containerView.frame.size.height - titleView.frame.size.height)
-			
+			guard let view = titleView.viewWithTag(10001)?.subviews.first else {
+				return
+			}
+			let rect = CGRect.init(origin: view.frame.origin, size: CGSize(width: width, height: view.frame.size.height))
+			view.frame = rect.insetBy(dx: width * (1 - 0.618) * 0.5, dy: 0)
 			layoutSubviewsOfContainerView()
 			self.titleView.reloadData()
 		}
 	}
-	var titleViewHeight: CGFloat?
+	var titleViewHeight: CGFloat = 44.0
+	var scrollIndicatorHeight: CGFloat = 3.0
 	
 	override public init(frame: CGRect) {
 		super.init(frame: frame)
+		backgroundColor = UIColor.white
 		setupUI()
 	}
 	
 	func setupUI() {
 		// title view
-		self.addSubview(titleView)
 		self.addSubview(containerView)
+		self.addSubview(titleView)
 	}
 	
 	private func layoutSubviewsOfContainerView() {
@@ -52,8 +58,8 @@ open class LBScrollPageView: UIView {
 			guard let title = title_index else {
 				return
 			}
-			let view = delegate?.scrollPageView(self, contentView: title)
 			
+			let view = delegate?.scrollPageView(self, contentView: title)
 			guard let aView = view else {
 				return
 			}
@@ -65,18 +71,30 @@ open class LBScrollPageView: UIView {
 	
 	private let titleViewCellIdentifier = "UICollectionViewCell"
 	private lazy var titleView: UICollectionView = {
-		let height = titleViewHeight ?? 44
 		let flowLayout = UICollectionViewFlowLayout()
 		flowLayout.scrollDirection = .horizontal
-		flowLayout.itemSize = CGSize.init(width: self.frame.size.width / CGFloat(countOfPage()), height: height)
+		let width = self.frame.size.width / CGFloat(countOfPage());
+		flowLayout.itemSize = CGSize.init(width: width, height: titleCollectionViewHeight())
 		flowLayout.minimumLineSpacing = 0
 		flowLayout.minimumInteritemSpacing = 0
 
-		let titleView = UICollectionView.init(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: height), collectionViewLayout: flowLayout)
+		let titleView = UICollectionView.init(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: titleViewHeight), collectionViewLayout: flowLayout)
 		titleView.delegate = self
+		titleView.backgroundColor = UIColor.clear
 		titleView.dataSource = self
-		titleView .register(UICollectionViewCell.self, forCellWithReuseIdentifier: titleViewCellIdentifier)
+		titleView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: titleViewCellIdentifier)
+		titleView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: scrollIndicatorHeight, right: 0)
 		
+		let scrollIndicator = UIScrollView.init(frame: CGRect(x: 0, y: titleCollectionViewHeight(), width: self.frame.size.width, height: scrollIndicatorHeight))
+		scrollIndicator.backgroundColor = UIColor.clear
+		scrollIndicator.tag = 10001
+		let view = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: scrollIndicatorHeight))
+		scrollIndicator.addSubview(view)
+		view.backgroundColor = UIColor.orange
+		view.layer.cornerRadius = scrollIndicatorHeight * 0.5
+		view.layer.masksToBounds = true
+		
+		titleView.addSubview(scrollIndicator);
 		return titleView;
 	}()
 	
@@ -86,10 +104,12 @@ open class LBScrollPageView: UIView {
 		containerView.isPagingEnabled = true
 		containerView.contentInset = UIEdgeInsets.init(top: titleView.frame.size.height, left: 0, bottom: 0, right: 0)
 		containerView.contentSize = CGSize.init(width: self.frame.size.width * CGFloat(countOfPage()), height: containerView.frame.size.height - titleView.frame.size.height)
-		
 		return containerView
-		
 	}()
+	
+	private func titleCollectionViewHeight() -> CGFloat {
+		return titleViewHeight - scrollIndicatorHeight
+	}
 	
 	private func countOfPage() -> Int {
 		let count = delegate?.titles(in: self).count
@@ -114,10 +134,11 @@ extension LBScrollPageView: UICollectionViewDelegate, UICollectionViewDataSource
 		guard let title = title_row else {
 			return UICollectionViewCell.init()
 		}
-		let titleItem = delegate?.scrollPageView(self, headerItem: title)
+		let titleItem: UIView? = delegate?.scrollPageView(self, headerItem: title)
 		guard let item = titleItem else {
 			return UICollectionViewCell.init()
 		}
+		item.frame = cell.contentView.bounds;
 		cell.contentView.addSubview(item)
 		
 		return cell
