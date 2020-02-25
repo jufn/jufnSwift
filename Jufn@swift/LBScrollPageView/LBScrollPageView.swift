@@ -14,7 +14,7 @@ public protocol LBScrollPageViewDelegate: NSObjectProtocol {
 	
 	func scrollPageView(_ scrollPageView: LBScrollPageView, headerItem AtTitle: String) -> UIView // headerItem
 	
-	func scrollPageView(_ scrollPageView: LBScrollPageView, tapAt headerItem: UIView) /// 点击headerItem
+	func scrollPageView(_ scrollPageView: LBScrollPageView, tapAt headerItem: UIView) // 点击headerItem
 	
 	func scrollPageView(_ scrollPageView: LBScrollPageView, contentView AtTitle: String) -> UIView // content view
 	
@@ -88,6 +88,7 @@ open class LBScrollPageView: UIView {
 		let scrollIndicator = UIScrollView.init(frame: CGRect(x: 0, y: titleCollectionViewHeight(), width: self.frame.size.width, height: scrollIndicatorHeight))
 		scrollIndicator.backgroundColor = UIColor.clear
 		scrollIndicator.tag = 10001
+        scrollIndicator.delegate = self
 		let view = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: scrollIndicatorHeight))
 		scrollIndicator.addSubview(view)
 		view.backgroundColor = UIColor.orange

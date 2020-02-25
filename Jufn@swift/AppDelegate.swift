@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupTabbarStyle(delegate:UITabBarControllerDelegate?) -> ESTabBarController {
         let tabbarController = ESTabBarController();
         tabbarController.delegate = delegate;
-        tabbarController.title = "Irregularity";
+        tabbarController.title = "才艺";
         tabbarController.tabBar.shadowImage = UIImage(named: "transparent");
         tabbarController.shouldHijackHandler = {
             tabbarController, ViewController, index in

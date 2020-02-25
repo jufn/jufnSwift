@@ -235,16 +235,19 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Jufn@swift/Pods-Jufn@swift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Jufn@swift/Pods-Jufn@swift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Jufn@swift/Pods-Jufn@swift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Jufn@swift/Pods-Jufn@swift-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Jufn@swift/Pods-Jufn@swift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9FF3680B9E728D9A203FAC58 /* [CP] Check Pods Manifest.lock */ = {
